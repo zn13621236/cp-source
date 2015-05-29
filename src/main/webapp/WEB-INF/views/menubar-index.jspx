@@ -1,0 +1,57 @@
+<div id="navigationbar" class="what_body" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<!-- 		<spring:url var="banner" value="/resources/images/banner-graphic.png" />
+		<spring:url var="home" value="/" />
+		<spring:message code="button_home" var="home_label" htmlEscape="false" />
+		<a href="${home}" name="${fn:escapeXml(home_label)}" title="${fn:escapeXml(home_label)}"></a> -->
+
+	<!-- 	<ul id="index_title">
+
+						<li><h>Casual Poll</h></li>
+				</ul> -->
+
+	<div id="menuBarAfterLogin">
+	 	<ul class="title">
+			<spring:url value="/" var="home" />
+			<li><a href="${home}">Casual Poll</a> <img src="http://localhost:8080/PollManiac/resources/images/poll_topic.png" alt="image not available" id="logo_img" /></li>
+		</ul> 
+
+
+		<!-- <div id="menu_position">
+
+			<ul class="flyouthovright">
+				<li><spring:url value="/polls/create" var="create_poll_url" /> <a href="${create_poll_url}">Create</a></li>
+			</ul>
+			<ul class="flyouthovright">
+				<spring:url value="/vote?random" var="vote" />
+				<li><a href="${vote}">Vote</a></li>
+			</ul>
+			<ul class="flyouthovright">
+				<li><spring:url value="/vote/popular" var="popular_poll_url" /> <a href="${popular_poll_url}">Hot</a></li>
+			</ul>
+			<ul class="flyouthovright">
+				<li><spring:url value="/users/rank" var="popular_poll_url" /> <a href="${popular_poll_url}">Super Star</a></li>
+			</ul>
+			<ul class="flyouthovright">
+				<li><spring:url value="/users/login?form" var="login_url" /> <a href="${login_url}">Log in</a></li>
+			</ul>
+		</div> -->
+		<spring:url value="/polls/create" var="create_poll_url" />
+		<spring:url value="/vote?random" var="vote" />
+		<spring:url value="/vote/popular" var="popular_poll_url" />
+		<spring:url value="/users/rank" var="user_rank_url" />
+		<spring:url value="/users/login?form" var="login_url" />
+
+		<div id="menu_position">
+			<ul id="sddm">
+				<li><a href="${create_poll_url}">Create</a></li>
+				<li><a href="${vote}">Vote</a></li>
+				<li><a href="${popular_poll_url}">Hot</a></li>
+				<li><a href="${user_rank_url}">Super Star</a></li>
+				<li><a href="${login_url}">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+	
+</div>

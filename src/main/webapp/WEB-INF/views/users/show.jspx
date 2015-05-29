@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<div class="pollframe">
+		<div class="pollframe_inner">
+			<div class="generalTheme">
+				<p>Account Details</p>
+			</div>
+			<page:show id="ps_com_archer_sp_domain_User" object="${user}" path="/users" z="QJnP4j9PvpZWracNsrpvHlh6nLY=" create="false" list="false">
+				<c:if test="${user.userImage!=null}">
+					<img src="${user.userImage}" id="user_show_image" />
+				</c:if>
+				<field:display field="userName" id="s_com_archer_sp_domain_User_userName" object="${user}" z="/RRGs56WFMy7qOqsBAcLx6ft/dE=" />
+				<field:display field="nickName" id="s_com_archer_sp_domain_User_nickName" object="${user}" z="user_managed" />
+
+				<field:display field="points" id="s_com_archer_sp_domain_User_points" object="${user}" z="LqMsudi1yCM4mh5wjdH6rzchu8A=" />
+				<field:display field="status" id="s_com_archer_sp_domain_User_status" object="${user}" z="yQVBSvfRQOz3dSuJ4HaWYxEJgUY=" />
+				<field:simpleDisplay field="createDate" id="s_com_archer_sp_domain_User_createDate" label="Level" value="${user.level}" />
+				<field:simpleDisplay field="createDate" id="s_com_archer_sp_domain_User_createDate" label="Total vote" value="${totalVote}" />
+				<field:simpleDisplay field="createDate" id="s_com_archer_sp_domain_User_createDate" label="Total poll" value="${totalPoll}" />
+								<field:simpleDisplay field="createDate" id="s_com_archer_sp_domain_User_createDate" label="Member since" value="${createDate}" />
+			</page:show>
+		</div>
+	</div>
+</div>

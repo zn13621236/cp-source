@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="polls/list">
+        <put-attribute name="body" value="/WEB-INF/views/polls/list.jspx"/>
+    </definition>
+    <definition extends="none" name="polls/list-none">
+        <put-attribute name="body" value="/WEB-INF/views/polls/list-append.jspx"/>
+    </definition>    
+<definition extends="default" name="polls/show">
+        <put-attribute name="body" value="/WEB-INF/views/polls/show.jspx"/>
+    </definition>
+<definition extends="front-page" name="polls/show-before-login">
+        <put-attribute name="body" value="/WEB-INF/views/polls/show.jspx"/>
+    </definition>
+<definition extends="none" name="polls/show-preview">
+        <put-attribute name="body" value="/WEB-INF/views/polls/show-block.jspx"/>
+    </definition>          
+<definition extends="default" name="polls/create">
+        <put-attribute name="body" value="/WEB-INF/views/polls/create.jspx"/>
+    </definition> 
+<definition extends="front-page" name="polls/create-before-login">
+        <put-attribute name="body" value="/WEB-INF/views/polls/create.jspx"/>
+    </definition>    
+<definition extends="default" name="polls/update">
+        <put-attribute name="body" value="/WEB-INF/views/polls/update.jspx"/>
+    </definition>
+<definition extends="default" name="polls/upload">
+        <put-attribute name="body" value="/WEB-INF/views/polls/upload.jspx"/>
+    </definition>
+<definition extends="default" name="polls/image1">
+        <put-attribute name="body" value="/WEB-INF/views/polls/create-imagepoll-1.jspx"/>
+    </definition>
+<definition extends="default" name="polls/image2">
+        <put-attribute name="body" value="/WEB-INF/views/polls/create-imagepoll-2.jspx"/>
+    </definition>    
+<definition extends="default" name="polls/template">
+        <put-attribute name="body" value="/WEB-INF/views/polls/template.jspx"/>
+    </definition> 
+<definition extends="front-page" name="polls/template-before-login">
+        <put-attribute name="body" value="/WEB-INF/views/polls/template.jspx"/>
+    </definition> 
+<definition extends="front-page" name="polls/ready">
+        <put-attribute name="body" value="/WEB-INF/views/polls/ready.jspx"/>
+    </definition>   
+<definition extends="none" name="polls/show-light-view">
+        <put-attribute name="body" value="/WEB-INF/views/polls/show-light-view.jspx"/>
+    </definition>                               
+</tiles-definitions>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_archer_sp_domain_db_Report" items="${reports}" z="AWJwj3423NrWSXFr0jgGreEs4qg=">
+        <table:table data="${reports}" id="l_com_archer_sp_domain_db_Report" path="/report" z="XwvAcd9JGTIeEUNeJ5QP0Ls2t0A=">
+            <table:column id="c_com_archer_sp_domain_db_Report_pollGuid" property="pollGuid" z="BFWV1Wf+6e3cxcQy0CQC4IvEFx0="/>
+            <table:column id="c_com_archer_sp_domain_db_Report_reportReason" property="reportReason" z="xhBkUyXzuY2iQoIy9OthKMyBy8w="/>
+            <table:column id="c_com_archer_sp_domain_db_Report_reportTime" property="reportTime" z="IC+zLCg2SaRouwRzqySDeabjEPc="/>
+            <table:column id="c_com_archer_sp_domain_db_Report_reporterGuid" property="reporterGuid" z="au/VXu4wpQQQIFI/LiBq9GxEWrg="/>
+        </table:table>
+    </page:list>
+</div>

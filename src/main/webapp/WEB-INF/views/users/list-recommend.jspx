@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<!-- 	<div id="recommend_user_replace">
+		<c:forEach var="r_user" items="${recommend_users}" varStatus="varStatus">
+			<div id="recommend_user_element">
+				<c:choose>
+					<c:when test="${r_user.userImage!=null}">
+						<img id="recommendUserImage" src="${r_user.userImage}" alt="image not found" />
+					</c:when>
+					<c:otherwise>
+						<img id="recommendUserImage" src="https://s3-us-west-2.amazonaws.com/superpolltest/24655292e4034552a643615d0411f86c-1391234407790.png" alt="image not found" />
+					</c:otherwise>
+				</c:choose>
+				<div id="recommend_user_attribute">
+					<p>${r_user.nickName}</p>
+				</div>
+			</div>
+		</c:forEach>
+	</div> -->
+
+	<div id="recommend_user_replace">
+		<c:choose>
+			<c:when test="${!empty recommend_page}">
+				<spring:url value="/users/list/recommend/users?page=${recommend_page}" var="recommend_user_url" />
+			</c:when>
+			<c:otherwise>
+				<spring:url value="/users/list/recommend/users" var="recommend_user_url" />
+			</c:otherwise>
+		</c:choose>
+		<div id="recommend_user">
+			<c:forEach var="r_user" items="${recommend_users}" varStatus="varStatus">
+				<spring:url value="/users/show/others/${r_user.guid}" var="user_detail" />
+				<a href="${user_detail}">
+					<div id="recommend_user_element">
+						<c:choose>
+							<c:when test="${r_user.userImage!=null}">
+								<img id="recommendUserImage" src="${r_user.userImage}" alt="image not found" />
+							</c:when>
+							<c:otherwise>
+								<img id="recommendUserImage" src="https://s3-us-west-2.amazonaws.com/superpolltest/24655292e4034552a643615d0411f86c-1391234407790.png" alt="image not found" />
+							</c:otherwise>
+						</c:choose>
+						<div id="recommend_user_attribute">
+							<p>${r_user.nickName}</p>
+						</div>
+					</div>
+				</a>
+			</c:forEach>
+			<div id="go_see_more">
+				<a href="javascript:ajaxFanRequest('${recommend_user_url}','recommend_user_replace')">see more</a>
+			</div>
+		</div>
+	</div>
+
+</div>

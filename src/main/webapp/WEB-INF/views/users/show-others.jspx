@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:form="http://www.springframework.org/tags/form" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<div class="pollframe">
+		<div class="pollframe_inner">
+			<div class="generalTheme">
+				<p>User Details</p>
+			</div>
+			<c:choose>
+				<c:when test="${watched==true}">
+					<spring:url value="/users/unFan/${user.guid}" var="menu_item_url" />
+					<form:form method="post" action="${menu_item_url}">
+						<input class="pin" type="submit" value="unfan" />
+					</form:form>
+				</c:when>
+				<c:otherwise>
+					<spring:url value="/users/fan/${user.guid}" var="menu_item_url" />
+					<form:form method="post" action="${menu_item_url}">
+						<input class="pin" type="submit" value="fan user" />
+					</form:form>
+				</c:otherwise>
+			</c:choose>
+
+			<page:show id="ps_com_archer_sp_domain_User" object="${user}" path="/users" z="QJnP4j9PvpZWracNsrpvHlh6nLY=" create="false" list="false" delete="false" update="false">
+				<c:if test="${user.userImage!=null}">
+					<img src="${user.userImage}" id="user_show_image" />
+				</c:if>
+				<spring:url value="/users/idol/activity/${user.guid}" var="url" />
+				<a href="${url}"> <field:display field="nickName" id="s_com_archer_sp_domain_User_nickName" object="${user}" z="user_managed" /></a>
+				<field:simpleDisplay field="createDate" id="s_com_archer_sp_domain_User_createDate" label="Level" value="${user.level}" />
+				<field:simpleDisplay field="createDate" id="s_com_archer_sp_domain_User_fanNum" label="Fan" value="${user.fanNum}" />
+				<field:simpleDisplay field="createDate" id="s_com_archer_sp_domain_User_createDate" label="Total vote" value="${totalVote}" />
+				<field:simpleDisplay field="createDate" id="s_com_archer_sp_domain_User_createDate" label="Total poll" value="${totalPoll}" />
+				<field:simpleDisplay field="createDate" id="s_com_archer_sp_domain_User_createDate" label="Member since" value="${createDate}" />
+			</page:show>
+		</div>
+	</div>
+</div>

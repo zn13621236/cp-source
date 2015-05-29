@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_archer_sp_domain_Poll" idField="guid" modelAttribute="poll" path="/polls" versionField="none" z="1dk02Yw5QMIhlRIkX9yfX3LhtzU=">
+        <field:input field="question" id="c_com_archer_sp_domain_Poll_question" z="GM1L8uTXHJhCjlgIp3rdI1BHfWM="/>
+        <field:input field="userGuid" id="c_com_archer_sp_domain_Poll_userGuid" z="IhtX3zitD1Jq4D8NkqWGsiH7yd0="/>
+        <field:input field="status" id="c_com_archer_sp_domain_Poll_status" z="BObfIm6OvTRhkeoo9Dj0Kp5aOYQ="/>
+        <field:input field="createDate" id="c_com_archer_sp_domain_Poll_createDate" z="IZdlX8S6T/ETjSHo72sXzXGFJiE="/>
+        <field:input field="options" id="c_com_archer_sp_domain_Poll_options" z="4l0ezuxvnb64tWVPXCH1aRW9KAw="/>
+        <field:input field="pollers" id="c_com_archer_sp_domain_Poll_pollers" z="heJUqiUYgDO4OPP2qy/rhGiNgGo="/>
+        <field:input field="voteNum" id="c_com_archer_sp_domain_Poll_voteNum" z="ybXm+3tHSDcw5uHIRpEnpYnd2Ls="/>
+    </form:update>
+</div>

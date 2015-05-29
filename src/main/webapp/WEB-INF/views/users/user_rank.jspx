@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+		<jsp:directive.page contentType="text/html;charset=UTF-8" />
+		<jsp:output omit-xml-declaration="yes" />
+		<div class="pollframe">
+				<div class="pollframe_inner">
+						<c:forEach var="u" items="${users}" varStatus="varStatus">
+								<div id="watcherElement">
+										<p>Top ${varStatus.count}</p>
+										<c:if test="${u.userImage!=null}">
+					<img src="${u.userImage}" id="user_rank_image" />
+				</c:if>
+										<p>${u.nickName}</p>
+										<p>Level: ${u.level}</p>
+										<p>${u.fanNum} fans</p>
+										
+								</div>
+						</c:forEach>
+				</div>
+		</div>
+</div>

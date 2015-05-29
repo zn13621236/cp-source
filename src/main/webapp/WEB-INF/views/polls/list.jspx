@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+	<page:list id="pl_com_archer_sp_domain_Poll" items="${polls}" z="ljdO+FtZS00dNJpThDbmRnuqOsQ=" label="Voted polls" labelPlural="Voted polls">
+		<div id="list_poll_odd">
+			<c:forEach var="poll" items="${polls}" varStatus="varStatus">
+				<spring:url value="/polls/${poll.guid}/show" var="show_form_url" />
+				<c:if test="${varStatus.count%2!=0}">
+					<a href="${show_form_url}">
+						<DIV class="poll_preview_block">
+							<DIV id="forhover">
+								<p id="poll_list_topic">${poll.category}</p>
+								<spring:url value="/vote/${poll.guid}?direct" var="vote_direct" />
+								<IMG id="detail_zoom_icon" src="http://localhost:8080/PollManiac/resources/images/zoom.png" alt=""></IMG>
+								<c:if test="${poll.modDate>userId.lastLogInTime}">
+									<p>new comment/vote!!</p>
+								</c:if>
+								<c:if test="${!empty poll.privateLink}">
+									<p>private</p>
+								</c:if>
+								<c:choose>
+									<c:when test="${fn:contains(poll.question,poll.guid)}">
+										<img src="${poll.question}" alt="image not available" height="110" width="130" />
+									</c:when>
+									<c:otherwise>
+										<p class="text_indent">${poll.question}</p>
+									</c:otherwise>
+								</c:choose>
+								<c:forEach var="option" items="${poll.options}" varStatus="varStatus">
+									<c:choose>
+										<c:when test="${fn:contains(option,poll.guid)}">
+											<img id="list_image" src="${option}" alt="image not available" height="90" width="110" />
+										</c:when>
+										<c:otherwise>
+											<p class="text_indent">${option}</p>
+											<p id="over">
+												<fmt:formatNumber type="number" value="${poll.voteNum==0?0:option.counter/poll.voteNum*100}" maxFractionDigits="2" />
+												%
+											</p>
+											<c:set var="width" value="${poll.voteNum==0?1*2:option.counter/poll.voteNum*100*2}px"></c:set>
+											<p style="height: 20px; background: rgba(36, 220, 236, 0.34902); font-size:11px; margin-left:30px; width: ${width};"></p>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<div id="list_bottom_note">
+									<p id="list_poll_voteNum">Voters: ${poll.voteNum}</p>
+									<p id="list_poll_voteNum">Comments: ${poll.commentNum}</p>
+									<p id="list_poll_voteNum">By ${poll.owner}</p>
+								</div>
+							</DIV>
+						</DIV>
+					</a>
+				</c:if>
+			</c:forEach>
+		</div>
+		<div id="list_poll_even">
+			<c:forEach var="poll" items="${polls}" varStatus="varStatus">
+				<spring:url value="/polls/${poll.guid}/show" var="show_form_url" />
+				<c:if test="${varStatus.count%2==0}">
+					<a href="${show_form_url}">
+						<DIV class="poll_preview_block">
+							<DIV id="forhover">
+								<p id="poll_list_topic">${poll.category}</p>
+								<spring:url value="/vote/${poll.guid}?direct" var="vote_direct" />
+								<IMG id="detail_zoom_icon" src="http://localhost:8080/PollManiac/resources/images/zoom.png" alt=""></IMG>
+								<c:if test="${poll.modDate>userId.lastLogInTime}">
+									<p>new comment/vote!!</p>
+								</c:if>
+								<c:if test="${!empty poll.privateLink}">
+									<p>private</p>
+								</c:if>
+								<c:choose>
+									<c:when test="${fn:contains(poll.question,poll.guid)}">
+										<img src="${poll.question}" alt="image not available" height="110" width="130" />
+									</c:when>
+									<c:otherwise>
+										<p class="text_indent">${poll.question}</p>
+									</c:otherwise>
+								</c:choose>
+								<c:forEach var="option" items="${poll.options}" varStatus="varStatus">
+									<c:choose>
+										<c:when test="${fn:contains(option,poll.guid)}">
+											<p>
+												<img id="list_image" src="${option}" alt="image not available" height="90" width="110" />
+											</p>
+											<p id="over">
+												<fmt:formatNumber type="number" value="${poll.voteNum==0?0:option.counter/poll.voteNum*100}" maxFractionDigits="2" />
+												%
+											</p>
+											<c:set var="width" value="${poll.voteNum==0?1*2:option.counter/poll.voteNum*100*2}px"></c:set>
+											<p style="height: 20px; background: rgba(36, 220, 236, 0.34902); font-size:11px; margin-left:30px; width: ${width};"></p>
+										</c:when>
+										<c:otherwise>
+											<p class="text_indent">${option}</p>
+											<p id="over">
+												<fmt:formatNumber type="number" value="${poll.voteNum==0?0:option.counter/poll.voteNum*100}" maxFractionDigits="2" />
+												%
+											</p>
+											<c:set var="width" value="${poll.voteNum==0?1*2:option.counter/poll.voteNum*100*2}px"></c:set>
+											<p style="height: 20px; background: rgba(36, 220, 236, 0.34902); font-size:11px; margin-left:30px; width: ${width};"></p>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<div id="list_bottom_note">
+									<p id="list_poll_voteNum">Voters: ${poll.voteNum}</p>
+									<p id="list_poll_voteNum">Comments: ${poll.commentNum}</p>
+									<p id="list_poll_voteNum">By ${poll.owner}</p>
+								</div>
+							</DIV>
+						</DIV>
+					</a>
+				</c:if>
+			</c:forEach>
+		</div>
+
+
+		<c:if test="${fn:length(polls)==12}">
+			<c:choose>
+				<c:when test="${voted==true}">
+					<!-- 	<div class="vote_poll_element_wrapper_voted"> -->
+					<spring:url value="/polls/list/voted/append?page=" var="url" />
+					<c:set var="scroll" value="true"></c:set>
+					<div id="content"></div>
+					<!-- </div> -->
+				</c:when>
+				<c:when test="${pined_voted==true}">
+					<!-- 	<div class="vote_poll_element_wrapper_voted"> -->
+					<spring:url value="/polls/list/pined/append?page=" var="url" />
+					<c:set var="scroll" value="true"></c:set>
+					<div id="content"></div>
+					<!-- </div> -->
+				</c:when>
+				<c:otherwise>
+					<!-- <div class="vote_poll_element_wrapper_voted"> -->
+					<spring:url value="/polls/list/mine/append?page=" var="url" />
+					<c:set var="scroll" value="true"></c:set>
+					<div id="content"></div>
+					<!-- 	</div> -->
+				</c:otherwise>
+			</c:choose>
+
+		</c:if>
+
+
+	</page:list>
+	<!-- 		</div>
+	</div> -->
+
+	<c:set var="host" value="${url}"></c:set>
+	<c:set var="maxPage" value="${maxPage}"></c:set>
+
+	<script type="text/javascript">
+		var host = '${host}';
+		var scroll = '${scroll}';
+		var maxPage = '${maxPage}';
+		jQuery(document).ready(
+				function($) {
+					$(".see_more_list").css("display", "inline-block");
+					$("#wait2").hide();
+					var count = 0;
+					$(window).scroll(
+							function() {
+								if (scroll != "true" || maxPage - count == 0) {
+									$("#scroll_jquery").replaceWith(
+											"<h>Back To Top</h>");
+									/* 	$("#wait2").show(); */
+									return true;
+								}
+								/*   $("#wait").delay(8000).show(); */
+
+								if ($(window).scrollTop() == $(document)
+										.height()
+										- $(window).height()) {
+									count++;
+									var url = host;
+									url = url + count;
+									loadArticle(url);
+								}
+							});
+
+					function loadArticle(reqURL) {
+						$.ajax({
+							url : reqURL,
+							type : 'GET',
+							success : function(html) {
+								$("#content").append(html); // This will be the div where our content will be loaded
+							}
+						});
+						return false;
+					}
+				});
+	</script>
+
+
+
+</div>

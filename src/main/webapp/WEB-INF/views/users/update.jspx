@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+		<jsp:directive.page contentType="text/html;charset=UTF-8" />
+		<jsp:output omit-xml-declaration="yes" />
+		<div class="pollframe">
+				<div class="pollframe_inner">
+						<form:update id="fu_com_archer_sp_domain_model_UpdatePasswordForm" modelAttribute="user" path="/users" versionField="none" z="dqsgaOozi2VATZ1X9NGizCihKHA=">
+								<field:display field="userName" id="c_com_archer_sp_domain_model_UpdatePasswordForm_userName" object="${user}" z="rPxi2g9Y/qxUWGvMqM0c8GMlTIQ=" />
+								<field:input field="oldPassWord" id="c_com_archer_sp_domain_model_UpdatePasswordForm_oldPassWord" type="password" min="4" max="40" z="fuVyQuiny6OvKxhUrXDCMIzJ3KA=" />
+								<field:input field="newPassWord" id="c_com_archer_sp_domain_model_UpdatePasswordForm_newPassWord" type="password" min="4" max="40" z="fuVyQuiny6OvKxhUrXDCMIzJ3KA=" />
+						</form:update>
+				</div>
+		</div>
+</div>

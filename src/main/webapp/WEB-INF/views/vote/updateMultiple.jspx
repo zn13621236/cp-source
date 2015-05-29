@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+		<jsp:directive.page contentType="text/html;charset=UTF-8" />
+		<jsp:output omit-xml-declaration="yes" />
+		<c:if test="${!empty poll1}">
+				<util:panel id="fu_com_archer_sp_domain_Poll1" title="Poll" openPane="true">
+						<spring:url value="/vote/multiple/${poll1.guid}" var="vote_multiple_url" />
+						<form:form method="post" commandName="poll1" action="${vote_multiple_url}">
+								<div>
+										<label id="vote"> Topic:</label>
+										<c:choose>
+												<c:when test="${fn:contains(poll1.question,poll1.guid)}">
+														<img src="${poll1.question}" alt="image not available" />
+												</c:when>
+												<c:otherwise>
+														<h2>${poll1.question}</h2>
+												</c:otherwise>
+										</c:choose>
+										<LABEL>Please Choose: </LABEL>
+										<div id="voteoption">
+												<ol>
+														<c:forEach var="option" items="${poll1.options}">
+																<!-- label>Option:</label-->
+																<li><c:choose>
+																				<c:when test="${fn:contains(option.description,poll1.guid)}">
+																						<img src="${option.description}" alt="image not available" />
+																						<form:radiobutton path="choice" value="${option.description}" />
+																				</c:when>
+																				<c:otherwise>
+																						<form:radiobutton class="radiobutton_vote" path="choice" value="${option.description}" label="${option.description}" />
+																				</c:otherwise>
+																		</c:choose></li>
+														</c:forEach>
+												</ol>
+										</div>
+										<input class="roundbutton" type="submit" value="VOTE" />
+								</div>
+						</form:form>
+						<spring:url value="/vote?random" var="menu_item_url" />
+						<a href="${menu_item_url}"><button class="roundbutton">SKIP</button></a>
+						<br />
+						<span class="vote_reportpoll_link"> <spring:url value="/report/${poll1.guid}/do?form" var="menu_item_url2" /> <a href="${menu_item_url2}">Report This Poll</a>
+						</span>
+				</util:panel>
+		</c:if>
+		<c:if test="${!empty poll2}">
+				<util:panel id="fu_com_archer_sp_domain_Poll2" title="Poll" openPane="true">
+						<spring:url value="/vote/multiple/${poll2.guid}" var="vote_multiple_url" />
+						<form:form method="post" commandName="poll2" action="${vote_multiple_url}">
+								<div>
+										<label id="vote"> Topic:</label>
+										<c:choose>
+												<c:when test="${fn:contains(poll2.question,poll2.guid)}">
+														<img src="${poll2.question}" alt="image not available" />
+												</c:when>
+												<c:otherwise>
+														<h2>${poll2.question}</h2>
+												</c:otherwise>
+										</c:choose>
+										<LABEL>Please Choose: </LABEL>
+										<div id="voteoption">
+												<ol>
+														<c:forEach var="option" items="${poll2.options}">
+																<!-- label>Option:</label-->
+																<li><c:choose>
+																				<c:when test="${fn:contains(option.description,poll2.guid)}">
+																						<img src="${option.description}" alt="image not available" />
+																						<form:radiobutton path="choice" value="${option.description}" />
+																				</c:when>
+																				<c:otherwise>
+																						<form:radiobutton class="radiobutton_vote" path="choice" value="${option.description}" label="${option.description}" />
+																				</c:otherwise>
+																		</c:choose></li>
+														</c:forEach>
+												</ol>
+										</div>
+										<input class="roundbutton" type="submit" value="VOTE" />
+								</div>
+						</form:form>
+						<spring:url value="/vote?random" var="menu_item_url" />
+						<a href="${menu_item_url}"><button class="roundbutton">SKIP</button></a>
+						<br />
+						<span class="vote_reportpoll_link"> <spring:url value="/report/${poll2.guid}/do?form" var="menu_item_url2" /> <a href="${menu_item_url2}">Report This Poll</a>
+						</span>
+				</util:panel>
+		</c:if>
+		<c:if test="${!empty poll3}">
+				<util:panel id="fu_com_archer_sp_domain_Poll3" title="Poll" openPane="true">
+						<spring:url value="/vote/multiple/${poll3.guid}" var="vote_multiple_url" />
+						<form:form method="post" commandName="poll3" action="${vote_multiple_url}">
+								<div>
+										<label id="vote"> Topic:</label>
+										<c:choose>
+												<c:when test="${fn:contains(poll3.question,poll3.guid)}">
+														<img src="${poll3.question}" alt="image not available" />
+												</c:when>
+												<c:otherwise>
+														<h2>${poll3.question}</h2>
+												</c:otherwise>
+										</c:choose>
+										<LABEL>Please Choose: </LABEL>
+										<div id="voteoption">
+												<ol>
+														<c:forEach var="option" items="${poll3.options}">
+																<!-- label>Option:</label-->
+																<li><c:choose>
+																				<c:when test="${fn:contains(option.description,poll3.guid)}">
+																						<img src="${option.description}" alt="image not available" />
+																						<form:radiobutton path="choice" value="${option.description}" />
+																				</c:when>
+																				<c:otherwise>
+																						<form:radiobutton class="radiobutton_vote" path="choice" value="${option.description}" label="${option.description}" />
+																				</c:otherwise>
+																		</c:choose></li>
+														</c:forEach>
+												</ol>
+										</div>
+										<input class="roundbutton" type="submit" value="VOTE" />
+								</div>
+						</form:form>
+						<spring:url value="/vote?random" var="menu_item_url" />
+						<a href="${menu_item_url}"><button class="roundbutton">SKIP</button></a>
+						<br />
+						<span class="vote_reportpoll_link"> <spring:url value="/report/${poll3.guid}/do?form" var="menu_item_url2" /> <a href="${menu_item_url2}">Report This Poll</a>
+						</span>
+				</util:panel>
+		</c:if>
+		<c:if test="${!empty poll4}">
+				<util:panel id="fu_com_archer_sp_domain_Poll4" title="Poll" openPane="true">
+						<spring:url value="/vote/multiple/${poll4.guid}" var="vote_multiple_url" />
+						<form:form method="post" commandName="poll4" action="${vote_multiple_url}">
+								<div>
+										<label id="vote"> Topic:</label>
+										<c:choose>
+												<c:when test="${fn:contains(poll4.question,poll4.guid)}">
+														<img src="${poll4.question}" alt="image not available" />
+												</c:when>
+												<c:otherwise>
+														<h2>${poll4.question}</h2>
+												</c:otherwise>
+										</c:choose>
+										<LABEL>Please Choose: </LABEL>
+										<div id="voteoption">
+												<ol>
+														<c:forEach var="option" items="${poll4.options}">
+																<!-- label>Option:</label-->
+																<li><c:choose>
+																				<c:when test="${fn:contains(option.description,poll4.guid)}">
+																						<img src="${option.description}" alt="image not available" />
+																						<form:radiobutton path="choice" value="${option.description}" />
+																				</c:when>
+																				<c:otherwise>
+																						<form:radiobutton class="radiobutton_vote" path="choice" value="${option.description}" label="${option.description}" />
+																				</c:otherwise>
+																		</c:choose></li>
+														</c:forEach>
+												</ol>
+										</div>
+										<input class="roundbutton" type="submit" value="VOTE" />
+								</div>
+						</form:form>
+						<spring:url value="/vote?random" var="menu_item_url" />
+						<a href="${menu_item_url}"><button class="roundbutton">SKIP</button></a>
+						<br />
+						<span class="vote_reportpoll_link"> <spring:url value="/report/${poll4.guid}/do?form" var="menu_item_url2" /> <a href="${menu_item_url2}">Report This Poll</a>
+						</span>
+				</util:panel>
+		</c:if>
+</div>

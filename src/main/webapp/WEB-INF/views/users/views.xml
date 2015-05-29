@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="users/list">
+        <put-attribute name="body" value="/WEB-INF/views/users/list.jspx"/>
+    </definition>
+<definition extends="default" name="users/show">
+        <put-attribute name="body" value="/WEB-INF/views/users/show.jspx"/>
+    </definition>
+<definition extends="front-page" name="users/create">
+        <put-attribute name="body" value="/WEB-INF/views/users/create.jspx"/>
+    </definition>
+<definition extends="default" name="users/update">
+        <put-attribute name="body" value="/WEB-INF/views/users/update.jspx"/>
+    </definition>
+    <definition extends="front-page" name="users/login">
+        <put-attribute name="body" value="/WEB-INF/views/users/user_login.jspx"/>
+    </definition>
+        <definition extends="front-page" name="users/fyp">
+        <put-attribute name="body" value="/WEB-INF/views/users/fyp.jspx"/>
+    </definition>
+<definition extends="default" name="users/update-preference">
+        <put-attribute name="body" value="/WEB-INF/views/users/updatePreference.jspx"/>
+</definition>  
+<definition extends="default" name="users/list-watches">
+        <put-attribute name="body" value="/WEB-INF/views/users/list-watch.jspx"/>
+</definition> 
+<definition extends="none" name="users/list-recommend">
+        <put-attribute name="body" value="/WEB-INF/views/users/list-recommend.jspx"/>
+</definition> 
+<definition extends="default" name="users/activities">
+        <put-attribute name="body" value="/WEB-INF/views/users/activity.jspx"/>
+</definition>
+<definition extends="none" name="users/activities-none">
+        <put-attribute name="body" value="/WEB-INF/views/users/activity-append.jspx"/>
+</definition>      
+<definition extends="front-page" name="users/rank">
+        <put-attribute name="body" value="/WEB-INF/views/users/user_rank.jspx"/>
+</definition>    
+<definition extends="default" name="users/show-others">
+        <put-attribute name="body" value="/WEB-INF/views/users/show-others.jspx"/>
+</definition>
+<definition extends="none" name="users/true">
+        <put-attribute name="body" value="/WEB-INF/views/users/true.jspx"/>
+</definition>
+<definition extends="none" name="users/false">
+        <put-attribute name="body" value="/WEB-INF/views/users/false.jspx"/>
+</definition>         
+</tiles-definitions>

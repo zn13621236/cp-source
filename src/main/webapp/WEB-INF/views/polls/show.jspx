@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:fb="http://ogp.me/ns/fb#" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<div class="voteframe">
+		<div class="pollframe_inner">
+			<page:show id="ps_com_archer_sp_domain_Poll" object="${poll}" path="/polls" z="3YmogYfNcr249xq5yFD/ykrlAT0=" list="false" create="false" update="false" delete="${owner}">
+				<div class="pollTheme">
+					<p>${poll.category}</p>
+				</div>
+				<c:if test="${fn:length(poll.owner)>=1}">
+					<div id="ownerLabel">
+						<p>Created by: ${poll.owner}</p>
+					</div>
+					<div id="fanBlock">
+						<c:if test="${owner!=true}">
+							<c:choose>
+								<c:when test="${watched==true}">
+									<spring:url value="/polls/unFan/${poll.guid}/${poll.userGuid}" var="menu_item_url" />
+									<form:form method="post" action="${menu_item_url}">
+										<input class="pin" type="submit" value="unfan" />
+									</form:form>
+								</c:when>
+								<c:otherwise>
+									<spring:url value="/polls/fan/${poll.guid}/${poll.userGuid}" var="menu_item_url" />
+									<form:form method="post" action="${menu_item_url}">
+										<input class="pin" type="submit" value="fan user" />
+									</form:form>
+								</c:otherwise>
+							</c:choose>
+						</c:if>
+					</div>
+				</c:if>
+				<div id="pinBlock">
+					<c:choose>
+						<c:when test="${pined==true}">
+							<spring:url value="/polls/unPin/${poll.guid}" var="menu_item_url" />
+							<form:form method="post" action="${menu_item_url}">
+								<input class="pin" type="submit" value="unPin" />
+							</form:form>
+						</c:when>
+						<c:otherwise>
+							<spring:url value="/polls/pin/${poll.guid}" var="menu_item_url" />
+							<form:form method="post" action="${menu_item_url}">
+								<input class="pin" type="submit" value="pin poll" />
+							</form:form>
+						</c:otherwise>
+					</c:choose>
+				</div>
+
+				<div class="pollTopic">
+					<c:choose>
+						<c:when test="${fn:contains(poll.question,poll.guid)}">
+							<img src="${poll.question}" alt="image not available" />
+						</c:when>
+						<c:otherwise>
+							<p>${poll.question}</p>
+						</c:otherwise>
+					</c:choose>
+
+				</div>
+
+				<c:if test="${(!empty userId) and poll.privateLink!=null and (userId.guid==poll.userGuid)}">
+					<field:simpleDisplay label="Vote link" value="${poll.privateLink}" />
+				</c:if>
+
+				<LABEL id="pleaseChooseLabel">total voters: ${poll.voteNum}</LABEL>
+
+				<div id="next">
+					<spring:url value="/vote?random" var="menu_item_url" />
+					<a href="${menu_item_url}"> <img src="http://localhost:8080/PollManiac/resources/images/right_grey.png" alt="image not available" /></a>
+				</div>
+
+				<c:forEach var="option" items="${poll.options}" varStatus="varStatus">
+					<DIV id="option_block">
+						<c:choose>
+							<c:when test="${fn:contains(option.description,poll.guid)}">
+								<img class="option_show_image" src="${option.description}" alt="image not available" />
+								<p>${option.counter}peoplechosethis.</p>
+							</c:when>
+							<c:otherwise>
+								<p class="option">${option.description}(${option.counter}peoplechose this.)</p>
+							</c:otherwise>
+						</c:choose>
+						<h2 id="result_percentage">
+							<fmt:formatNumber type="number" value="${poll.voteNum==0?0:option.counter/poll.voteNum*100}" maxFractionDigits="2" />
+							%
+						</h2>
+						<div id="poll${varStatus.count}" style="height: 30px; background: rgba(36, 220, 236, 0.35);"></div>
+						<div id="poll_100_bar"></div>
+					</DIV>
+					<c:set var="width" value="${poll.voteNum==0?1*3:option.counter/poll.voteNum*100*3}px"></c:set>
+					<c:set var="id" value="poll${varStatus.count}"></c:set>
+					<SCRIPT>
+						var width = "${width}";
+						var id = "${id}";
+						document.getElementById(id).style.width = width;
+					</SCRIPT>
+				</c:forEach>
+
+
+				<c:if test="${fn:length(poll.owner)>=1}">
+					<div id="addComment">
+						<spring:url value="/polls/${poll.guid}/addComment" var="menu_item_url" />
+						<form:form method="post" commandName="newComment" action="${menu_item_url}">
+							<form:textarea id="addCommentTextBox" path="comment"></form:textarea>
+							<input id="comment_tag" type="submit" value="comment" />
+						</form:form>
+					</div>
+					<LABEL id="pleaseChooseLabel">Total comments: ${poll.commentNum}</LABEL>
+					<c:forEach var="comment" items="${comments}" varStatus="varStatus">
+						<div id="comment_wrapper">
+							<IMG src="${comment.userImage}" alt="" id="comment_user_thumbnail"></IMG>
+							<div class="comment">
+								<div id="comment_delete_position">
+									<c:choose>
+										<c:when test="${comment.nickName==userNickName}">
+											<spring:url value="/polls/${comment.pollGuid}/${comment.guid}/removeComment" var="url" />
+											<form:form method="post" action="${url}">
+												<input class="pin" type="submit" value="delete" />
+											</form:form>
+										</c:when>
+										<c:otherwise>
+											<c:choose>
+												<!--bug... use idol list pan duan..performance  -->
+												<c:when test="${watched==true}">
+													<spring:url value="/polls/unFan/${poll.guid}/${poll.userGuid}" var="menu_item_url" />
+													<form:form method="post" action="${menu_item_url}">
+														<input class="pin" type="submit" value="unfan" />
+													</form:form>
+												</c:when>
+												<c:otherwise>
+													<spring:url value="/polls/fan/${poll.guid}/${poll.userGuid}" var="menu_item_url" />
+													<form:form method="post" action="${menu_item_url}">
+														<input class="pin" type="submit" value="fan user" />
+													</form:form>
+												</c:otherwise>
+											</c:choose>
+										</c:otherwise>
+									</c:choose>
+								</div>
+								<!-- <p></p> -->
+								<h6>${comment.nickName}${comment.addDateGMT}</h6>
+								<p>${comment.comment}</p>
+							</div>
+						</div>
+
+					</c:forEach>
+					<c:if test="${fn:length(comments)==30}">
+						<spring:url value="/polls/${poll.guid}/show?page=${page+1}" var="next_comment_page" />
+						<a id="comment_see_more" href="${next_comment_page}">see more comments</a>
+					</c:if>
+				</c:if>
+
+			</page:show>
+
+
+		</div>
+
+
+
+	</div>
+
+	<div id="social_share_section">
+		<!--  
+		-->
+		<a class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></a> <a href="https://twitter.com/share" class="twitter-share-button" data-url="${sharelink}" data-text="Check out this poll" data-count="none">Tweet</a> <a class="g-plus" data-action="share"></a> 
+		
+	</div>
+
+	<script>
+		!function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
+					.test(d.location) ? 'http' : 'https';
+			if (!d.getElementById(id)) {
+				js = d.createElement(s);
+				js.id = id;
+				js.src = p + '://platform.twitter.com/widgets.js';
+				fjs.parentNode.insertBefore(js, fjs);
+			}
+		}(document, 'script', 'twitter-wjs');
+	</script>
+
+	<!-- Place this tag after the last share tag. -->
+	<script type="text/javascript">
+		(function() {
+			var po = document.createElement('script');
+			po.type = 'text/javascript';
+			po.async = true;
+			po.src = 'https://apis.google.com/js/platform.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(po, s);
+		})();
+	</script>
+
+	
+</div>
+
+
+

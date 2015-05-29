@@ -1,0 +1,173 @@
+<div id="navigationbar" class="what_body" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<div id="menuBarAfterLogin">
+
+		<ul class="title">
+			<spring:url value="/" var="home" />
+			<li><a href="${home}">Casual Poll</a> <img src="http://localhost:8080/PollManiac/resources/images/poll_topic.png" alt="image not available" id="logo_img" /></li>
+		</ul>
+		<!--  
+		<div id="menu_position">
+			<ul class="flyouthovright">
+				<spring:url value="/polls/create" var="url" />
+				<li><a href="${url}">Create</a></li>
+			</ul>
+
+			<ul class="flyouthovright">
+				<spring:url value="/vote?random" var="vote" />
+				<li><a href="${vote}">Vote</a>
+					<ul>
+						<spring:url value="/vote/popular" var="url" />
+						<li><a href="${url}">Popular</a></li>
+						<spring:url value="/polls/list/recommend" var="url" />
+						<li><a href="${url}">Recommend</a></li>
+					</ul></li>
+			</ul>
+
+			<ul class="flyouthovright">
+				<spring:url value="/polls/list/pined" var="url" />
+				<li><a href="${url}">Pins</a></li>
+			</ul>
+
+
+			<ul class="flyouthovright">
+				<li><a>Fans</a>
+					<ul>
+						<spring:url value="/users/idol/activity" var="url" />
+						<li><a href="${url}">Activity</a></li>
+						<spring:url value="/users/list/watch" var="url" />
+						<li><a href="${url}">Manage</a></li>
+					</ul></li>
+			</ul>
+			<ul class="flyouthovright">
+				<li><a>Poll</a>
+					<ul>
+						<spring:url value="/polls/list/mine" var="url" />
+						<li><a href="${url}">Mine</a></li>
+						<spring:url value="/polls/list/voted" var="url" />
+						<li><a href="${url}">Voted</a></li>
+					</ul></li>
+			</ul>
+			<ul class="flyouthovright">
+				<li><a>Account</a>
+					<ul>
+						<spring:url value="/users/show" var="url" />
+						<li><a href="${url}">Details</a></li>
+						<spring:url value="/users/update/preference?form" var="url" />
+						<li><a href="${url}">Update</a></li>
+						<spring:url value="/users/logout" var="url" />
+						<li><a href="${url}">Log out</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		-->
+		<spring:url value="/polls/create" var="create" />
+		<spring:url value="/vote?random" var="vote" />
+		<spring:url value="/vote/popular" var="popular" />
+		<spring:url value="/polls/list/recommend" var="recommend" />
+		<spring:url value="/polls/list/pined" var="pined" />
+		<spring:url value="/users/idol/activity" var="activity" />
+		<spring:url value="/users/list/watch" var="watch" />
+		<spring:url value="/polls/list/mine" var="mine" />
+		<spring:url value="/polls/list/voted" var="voted" />
+		<spring:url value="/users/show" var="show" />
+		<spring:url value="/users/update/preference?form" var="update" />
+		<spring:url value="/users/logout" var="logout" />
+		<div id="menu_position">
+			<ul id="sddm">
+				<li><a href="${create}">Create</a></li>
+				<li><a id="m2-2" href="${vote}" onmouseover="mopen('m2','m2-2','arrow-down2')" onmouseout="mclosetime('arrow-down2')">Vote<img id="arrow-down2" /></a>
+					<div id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+						<a href="${popular}">Popular</a><a href="${recommend}">Recommend</a>
+					</div></li>
+				<li><a href="${pined}">Pins</a></li>
+				<li><a href="${watch}">Fans</a></li>
+				<li><a href="${activity}">News!</a></li>
+				<!-- 
+				<li><a id="m1-1" onmouseover="mopen('m1','m1-1','arrow-down1')" onmouseout="mclosetime('arrow-down1')">Fans<img id="arrow-down1" /></a>
+					<div id="m1" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+						<a href="${activity}">Activity</a><a href="${watch}">Manage</a>
+					</div></li> -->
+				<!--  
+				<li><a id="m3-3" onmouseover="mopen('m3','m3-3','arrow-down3')" onmouseout="mclosetime('arrow-down3')">Polls<img id="arrow-down3" /></a>
+					<div id="m3" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+						<a href="${mine}">Mine</a> <a href="${voted}">Voted</a>
+					</div></li>
+-->
+
+				<li>
+				<a  id="m4-4" href="${show}"  onmouseover="mopen('m4','m4-4','arrow-down4')" onmouseout="mclosetime('arrow-down4')">Account<img id="arrow-down4" /></a>
+					<div id="m4" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+						<a href="${mine}">My Polls</a> <a href="${voted}">My Vote</a> <a href="${update}">Settings</a> <a href="${logout}">Log out</a>
+					</div>
+					</li>
+			</ul>
+		</div>
+		<!--		<div style="clear: both"></div>
+  -->
+	</div>
+
+
+
+
+
+	<script type="text/javascript">
+		var timeout = 10;
+		var closetimer = 100;
+		var ddmenuitem = 0;
+		var ddmenuitem2=0;
+		// open hidden layer
+		function mopen(id, id2, id3) {
+			// cancel close timer
+			mcancelclosetime();
+
+			// close old layer
+			if (ddmenuitem)
+				ddmenuitem.style.visibility = 'hidden';
+
+			// get new layer and show it
+			ddmenuitem = document.getElementById(id);
+			ddmenuitem.style.visibility = 'visible';
+			ddmenuitem2 = document.getElementById(id2);
+			ddmenuitem2.style.background = "rgba(177, 99, 163, 0.8)";
+			ddmenuitem2.style.color = "#FFF";
+			ddmenuitem3 = document.getElementById(id3);
+			var id4 = '#' + id3;
+			$(id4).css("border-top", "5px solid #FFF");
+		}
+		// close showed layer
+		function mclose() {
+			if (ddmenuitem) {
+				ddmenuitem.style.visibility = 'hidden';
+			}
+			if (ddmenuitem2) {
+
+				ddmenuitem2.style.background = "";
+				ddmenuitem2.style.color = "#727070";
+			}
+
+		}
+
+		// go close timer
+		function mclosetime(id3) {
+			$('#' + id3).css("border-top", "5px solid #888");
+			closetimer = window.setTimeout(mclose, timeout);
+
+		}
+
+		// cancel close timer
+		function mcancelclosetime() {
+			if (closetimer) {
+				window.clearTimeout(closetimer);
+				closetimer = null;
+			}
+		}
+
+		// close layer when click-out
+		document.onclick = mclose;
+	</script>
+
+
+
+</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=640">
+<title>Important Information about Your Account</title>
+<style>
+@media only screen and (max-device-width: 480px) {
+div:not(#container) .hide {
+	display: none !important;
+}
+div:not(#container) .contentTable, div:not(#container) .contentCell {
+	width: 320px !important;
+}
+div:not(#container) #headerPic {
+	width: 320px !important;
+	height: 150px !important;
+}
+div:not(#container) #thumbs {
+	width: 75px !important;
+	height: 56px !important;
+}
+div:not(#container) .title {
+	font-size: 22px;
+	color: #0086B5;
+}
+div:not(#container) .author {
+	font-size: 12px;
+}
+div:not(#container) .artContent {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+
+}
+div:not(#container) .footer {
+	font-size: 12px;
+}
+}
+.ReadMsgBody {
+	width: 100%;
+}
+.ExternalClass {
+	width: 100%;
+}
+</style>
+</head>
+<body>

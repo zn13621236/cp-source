@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+<c:forEach var="activity" items="${activities}" varStatus="varStatus">
+<!-- 
+				<spring:url value="/vote/${activity.guid}/preview" var="vote_url" /> -->
+
+				<div id="activityElement">
+					<IMG id="recommendUserImage" src="${activity.userImage}" />
+					<c:choose>
+						<c:when test="${fn:contains(activity.type,'comment')}">
+							<c:choose>
+								<c:when test="${fn:contains(activity.time,'0')}">
+									<h>${activity.nickName} commented on this poll today.</h>
+								</c:when>
+								<c:otherwise>
+									<h>${activity.nickName} commented on this poll ${activity.time} days ago.</h>
+								</c:otherwise>
+							</c:choose>
+						</c:when>
+						<c:otherwise>
+							<c:choose>
+								<c:when test="${fn:contains(activity.time,'0')}">
+									<h>${activity.nickName} created this poll today.</h>
+								</c:when>
+								<c:otherwise>
+									<h>${activity.nickName} created this poll ${activity.time} days ago.</h>
+								</c:otherwise>
+							</c:choose>
+						</c:otherwise>
+					</c:choose>
+
+				</div>
+
+				<div class="activity_poll_element_wrapper">
+					<div id="vote_poll_element">
+						<p id="poll_list_topic">${activity.poll.category}</p>
+						<spring:url value="/vote/${activity.poll.guid}?direct" var="vote_direct" />
+						<a href="${vote_direct}"><IMG id="detail_zoom_icon" src="http://localhost:8080/PollManiac/resources/images/zoom.png" alt=""></IMG></a>
+						<c:choose>
+							<c:when test="${fn:contains(activity.poll.question,activity.poll.guid)}">
+								<img src="${activity.poll.question}" alt="image not available" id="list_vote_image_question" />
+							</c:when>
+							<c:otherwise>
+								<p class="text_indent">${activity.poll.question}</p>
+							</c:otherwise>
+						</c:choose>
+						<c:forEach var="option" items="${activity.poll.options}" varStatus="varStatus">
+							<div id="vote_option">
+								<c:choose>
+									<c:when test="${fn:contains(option,activity.poll.guid)}">
+
+										<img src="${option}" alt="image not available" class="vote_list_option_image" />
+									</c:when>
+									<c:otherwise>
+										<div class="submitOptionList">${option.description}</div>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</c:forEach>
+						<p id="list_poll_voteNum">Total voters: ${activity.poll.voteNum}</p>
+						<p id="list_poll_voteNum">Total comments: ${activity.poll.commentNum}</p>
+					</div>
+				</div>
+			</c:forEach>
+</div>

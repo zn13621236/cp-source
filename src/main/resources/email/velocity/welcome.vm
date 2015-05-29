@@ -1,0 +1,55 @@
+#include( "email/velocity/common/header.vm")
+
+<IMG SRC="http://gco-tr.com:80/track?eas=1&mailingid=218048&messageid=87412&databaseid=1342657326&type=open&serial=16815648&emailid=jinglong.yang@gmail.com&userid=1_6&targetid=&fl=&extra=MultivariateId=&&&" WIDTH="1" HEIGHT="1" STYLE="border-width:0; border-style:hidden;" ALT=""/>
+<table width="100%" align="center" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td style="text-align: center; background-color: rgb(46, 46, 46);" width="100%" align="center"><table class="contentTable" width="640" align="center" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td style="text-align: center;" class="contentCell" width="100%" align="center"><table width="100%" align="center" border="0" cellpadding="0" cellspacing="0">
+              <tbody>
+              <tr>
+                <td style="text-align: center;" width="100%" align="center"><table class="hide" width="100%" align="center" border="0" cellpadding="0" cellspacing="0">
+                
+                    <tbody><tr>
+                      <td style="text-align: left; padding-left: 10px; padding-top: 5px; padding-bottom: 5px;" width="30%" align="left" bgcolor="#2e2e2e">&nbsp;<img  src="http://i.realone.com/assets/rn/img/3/3/0/9/45469033.jpg" alt="SuperPass" width="205" height="63"></td>
+                    </tr>
+                  </tbody></table>
+                  <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0">
+                                      
+                  </table></td>
+              </tr>
+			 <tr>
+                <td style="text-align: center;" width="100%" align="center"><div style="height: 20px; line-height: 20px;">&nbsp;</div>
+                  <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                      <td style="text-align: left; background-color: rgb(255, 255, 255); padding-top: 15px; padding-bottom: 15px;" width="100%" align="left"><table width="95%" align="center" border="0" cellpadding="0" cellspacing="0">
+                          <tbody><tr>
+                             <td style="text-align: left;" valign="top" width="100%" align="left"><p><font color="#666666" face="Arial, Helvetica" size="5"><b>Reset your SuperPass Password</b>
+          </font><p style="border-top:1px solid #a0a0a0;border-bottom:1px solid #a0a0a0;padding:6px 0px;color:#a0a0a0; face=Arial, Helvetica;">Account Email: ${email_address} </p>
+		  <font face="Arial, Helvetica" size="2" color="#666666">Hello,<br><br>A request has been made to reset your SuperPass password. If you did not make this request, please ignore this email. No changes will be made. <br><br>If you requested a password reset, click the link below.</font><br><br><font face="Arial, Helevtica" color="#3c896f" size="2">
+				${fyp_url}</font><br><br><font face="Arial, Helvetica" size="2" color="#666666">The link will expire in 24 hours.<br><br>Thank you,<br>The SuperPass Team</font>  </td>
+                          </tr>
+                        </tbody></table></td>
+                    </tr>
+                  </tbody></table>
+                                      <div style="height: 20px; line-height: 20px;">&nbsp;</div>
+                  
+              <tr>
+                <td width="100%" align="center" style="text-align: center; padding-top: 15px; padding-bottom: 30px;"><span style="font-family:tahoma, Helvetica, sans-serif; font-size:11px; color:#ffffff;" class="footer">You can use <a href="http://gco-tr.com:80/track?type=click&eas=1&mailingid=218048&messageid=87412&databaseid=1342657326&serial=16815648&emailid=jinglong.yang@gmail.com&userid=1_6&targetid=&fl=&extra=MultivariateId=&&&2000&&&https://account.real.com/acct/login.html?language=en" style="color: #cccccc;">My Account</a> to manage your  subscriptions | <a href="http://gco-tr.com:80/track?type=click&eas=1&mailingid=218048&messageid=87412&databaseid=1342657326&serial=16815648&emailid=jinglong.yang@gmail.com&userid=1_6&targetid=&fl=&extra=MultivariateId=&&&2001&&&http://post.real.com/unsubscribe.html" style="color: #cccccc;">Unsubscribe</a> | <a href="http://gco-tr.com:80/track?type=click&eas=1&mailingid=218048&messageid=87412&databaseid=1342657326&serial=16815648&emailid=jinglong.yang@gmail.com&userid=1_6&targetid=&fl=&extra=MultivariateId=&&&2002&&&http://www.realnetworks.com/about-us/legal/privacy.aspx" style="color: #cccccc;">Privacy Policy</a><br>
+
+                <br>
+                 <strong>RealNetworks, Inc.<br>
+                 </strong>P.O. Box 91123<br>
+                 Seattle, WA 98111-9223 <br>
+                 <br>
+                 RealNetworks, Inc. All  rights reserved. RealNetworks, Real, Real.com, RealPlayer, and the RealPlayer  logo<br>
+are registered trademarks of RealNetworks, Inc.</span><br />
+                </span></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+
+#include( "email/velocity/common/footer.vm")

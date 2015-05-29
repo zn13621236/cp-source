@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="lightbox" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+
+	<div class="voteframe_lightview">
+
+		<div class="pollTheme">
+			<p>${poll.category}</p>
+		</div>
+
+
+		<div class="pollTopic">
+			<c:choose>
+				<c:when test="${fn:contains(poll.question,poll.guid)}">
+					<img src="${poll.question}" alt="image not available" />
+				</c:when>
+				<c:otherwise>
+					<p>${poll.question}</p>
+				</c:otherwise>
+			</c:choose>
+		</div>
+		<LABEL id="pleaseChooseLabel" class="full">Please Choose: </LABEL>
+		<div id="voteoptionWrapper">
+			<c:forEach var="option" items="${poll.options}" varStatus="varStatus">
+				<div id="vote_option">
+					<spring:url value="/vote/${poll.guid}/${option.optionId}/multiple" var="vote_url" />
+					<c:set var="vote_url" value="${vote_url}"></c:set>
+					<c:set var="divId" value="${poll.guid}"></c:set>				
+							<c:choose>
+											<c:when test="${fn:contains(option,poll.guid)}">
+												<img src="${option}" alt="image not available" class="vote_list_option_image" onclick="javascript:ajaxSyncRequest('${vote_url}','${divId}')" />
+											</c:when>
+											<c:otherwise>
+												<a href="javascript:ajaxSyncRequest('${vote_url}','${divId}')">
+													<div class="submitOptionList">${option.description}</div>
+												</a>
+											</c:otherwise>
+										</c:choose>					
+				</div>
+			</c:forEach>
+		</div>
+
+<!--   		<span id="vote_reportpoll_link"> <spring:url value="/report/${poll.guid}/do?form" var="menu_item_url2" /> <a href="${menu_item_url2}">Report This Poll</a> -->
+	<!-- 	</span> -->
+	</div>
+</div>

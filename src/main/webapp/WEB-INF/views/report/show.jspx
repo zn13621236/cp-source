@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_archer_sp_domain_db_Report" object="${report}" path="/report" z="qAV+JG/71ldtMTjzmNOfMgn+8/c=" list="false" create="false" delete="false" update="false">
+        <field:display field="pollGuid" id="s_com_archer_sp_domain_db_Report_pollGuid" object="${report}" z="T0zvZxqfNLygrzREeznpxXVP26Q="/>
+        <field:display field="reportReason" id="s_com_archer_sp_domain_db_Report_reportReason" object="${report}" z="pi4L9MTE/nrn3W7A1LQsic/t2bw="/>
+        <field:display field="reportTime" id="s_com_archer_sp_domain_db_Report_reportTime" object="${report}" z="5N44OE4E3diBagYZf4qi3Yi/xpw="/>
+        <field:display field="reporterGuid" id="s_com_archer_sp_domain_db_Report_reporterGuid" object="${report}" z="dvaKjggtitp5f3z93K0xENLzx+w="/>
+    </page:show>
+</div>

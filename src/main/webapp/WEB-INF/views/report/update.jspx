@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_archer_sp_domain_db_Report" modelAttribute="report" path="/report" versionField="none" z="dtk6RbZETPVRPRZtRFj5cb3Cn+0=">
+        <field:input field="pollGuid" id="c_com_archer_sp_domain_db_Report_pollGuid" z="ik/MH5ZFEW4vUj4Ru9DuNo0OfhA="/>
+        <field:input field="reportReason" id="c_com_archer_sp_domain_db_Report_reportReason" z="ZyQcKC0FPDiLDGpM6d37eAnIj20="/>
+        <field:input field="reportTime" id="c_com_archer_sp_domain_db_Report_reportTime" z="dWejQmTDDBknQCvyTCgJXkzPz6M="/>
+        <field:input field="reporterGuid" id="c_com_archer_sp_domain_db_Report_reporterGuid" z="LY/a3i45LSYsEjP2+WKuY526Eyk="/>
+    </form:update>
+</div>

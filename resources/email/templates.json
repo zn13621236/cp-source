@@ -1,0 +1,19 @@
+[
+    {
+        "guid": "1",
+        "template_file": "welcome1",
+        "description": "Welcome to super poll!",
+        "from": "superpoll.g@gmail.com",
+        "subject": "Welcome to super poll",
+        "html": true
+    },
+
+    {
+        "guid": "2",
+        "template_file": "fyp",
+        "description": "Your new password on Super Poll",
+        "from": "superpoll.g@gmail.com",
+        "subject": "Your new password on Super Poll",
+        "html": true
+    }
+]

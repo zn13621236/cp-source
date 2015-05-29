@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="default" name="report/index">
+        <put-attribute name="body" value="/WEB-INF/views/report/index.jspx"/>
+    </definition>
+<definition extends="default" name="report/list">
+        <put-attribute name="body" value="/WEB-INF/views/report/list.jspx"/>
+    </definition>
+<definition extends="default" name="report/show">
+        <put-attribute name="body" value="/WEB-INF/views/report/show.jspx"/>
+    </definition>
+<definition extends="default" name="report/create">
+        <put-attribute name="body" value="/WEB-INF/views/report/create.jspx"/>
+    </definition>
+<definition extends="front-page" name="report/create-before-login">
+        <put-attribute name="body" value="/WEB-INF/views/report/create.jspx"/>
+    </definition>
+<definition extends="default" name="report/update">
+        <put-attribute name="body" value="/WEB-INF/views/report/update.jspx"/>
+    </definition>
+<definition extends="front-page" name="report/needsignup">
+        <put-attribute name="body" value="/WEB-INF/views/report/please-sign-up.jspx"/>
+    </definition>
+<definition extends="default" name="report/success">
+        <put-attribute name="body" value="/WEB-INF/views/report/report-success.jspx"/>
+    </definition>
+<definition extends="front-page" name="report/success-before-login">
+        <put-attribute name="body" value="/WEB-INF/views/report/report-success.jspx"/>
+    </definition>    
+</tiles-definitions>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="http://www.springframework.org/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+
+	<div class="voteframe">
+		<div id="mode_position">
+			<div id="fanBlock">
+				<spring:url value="/vote?random" var="vote" />
+				<a href="${vote}">
+					<div class="pin">single</div>
+				</a>
+			</div>
+			<div id="pinBlock">
+				<spring:url value="/vote/list?random" var="list_vote" />
+				<a href="${list_vote}">
+					<div class="pin">list</div>
+				</a>
+
+			</div>
+		</div>
+
+		<div class="pollTheme">
+			<p>${poll.category}</p>
+		</div>
+
+
+		<div class="pollTopic">
+			<c:choose>
+				<c:when test="${fn:contains(poll.question,poll.guid)}">
+					<img src="${poll.question}" alt="image not available" />
+				</c:when>
+				<c:otherwise>
+					<p>${poll.question}</p>
+				</c:otherwise>
+			</c:choose>
+		</div>
+		<div id="next">
+			<spring:url value="/vote?random" var="menu_item_url" />
+			<a href="${menu_item_url}"> <img src="http://localhost:8080/PollManiac/resources/images/right_grey.png" alt="image not available" /></a>
+		</div>
+		<LABEL id="pleaseChooseLabel" class="full">Please Choose: </LABEL>
+
+		<div id="voteoptionWrapper">
+			<ol>
+				<c:forEach var="option" items="${poll.options}">
+					<div id="voteoption">
+						<spring:url value="/vote/${poll.guid}/${option.optionId}" var="vote_url" />
+						<!-- label>Option:</label-->
+						<li><c:choose>
+								<c:when test="${fn:contains(option.description,poll.guid)}">
+									<!--  a href=""><img src="${option.description}" alt="image not available" /></a-->
+									<form:form method="post" action="${vote_url}">
+										<input type="image" src="${option.description}" alt="image not available" class="vote_option_image" />
+									</form:form>
+								</c:when>
+								<c:otherwise>
+									<form:form method="post" action="${vote_url}">
+										<input type="submit" value="${option.description}" class="submitOptionButton" />
+									</form:form>
+								</c:otherwise>
+							</c:choose></li>
+					</div>
+				</c:forEach>
+			</ol>
+		</div>
+
+		<span id="vote_reportpoll_link"> <spring:url value="/report/${poll.guid}/do?form" var="menu_item_url2" /> <a href="${menu_item_url2}">Report This Poll</a>
+		</span>
+	</div>
+
+
+	<div id="bottomNav">
+		<ul>
+			<c:forEach var="category" items="${categoryValues}" varStatus="varStatus">
+				<spring:url value="/vote/${category}?random" var="random_category_url" />
+				<li><a href="${random_category_url}"><BUTTON class="vote_tag">${category}</BUTTON></a></li>
+			</c:forEach>
+
+		</ul>
+	</div>
+
+</div>

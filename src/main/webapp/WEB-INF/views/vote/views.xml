@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition extends="default" name="vote/update">
+		<put-attribute name="body" value="/WEB-INF/views/vote/update.jspx" />
+	</definition>
+
+	<definition extends="front-page" name="vote/update-before-login">
+		<put-attribute name="body" value="/WEB-INF/views/vote/update.jspx" />
+	</definition>
+	<definition extends="default" name="vote/updateMultiple">
+		<put-attribute name="body"
+			value="/WEB-INF/views/vote/updateMultiple.jspx" />
+	</definition>
+	<definition extends="front-page" name="vote/updateMultiple-before-login">
+		<put-attribute name="body"
+			value="/WEB-INF/views/vote/updateMultiple.jspx" />
+	</definition>
+	<definition extends="default" name="vote/list">
+		<put-attribute name="body"
+			value="/WEB-INF/views/vote/list.jspx" />
+	</definition>
+	<definition extends="front-page" name="vote/list-before-login">
+		<put-attribute name="body"
+			value="/WEB-INF/views/vote/list.jspx" />
+	</definition>
+	<definition extends="front-page" name="vote/message-before-login">
+		<put-attribute name="body" value="/WEB-INF/views/vote/message.jspx" />
+	</definition>
+	<definition extends="default" name="vote/message">
+		<put-attribute name="body" value="/WEB-INF/views/vote/message.jspx" />
+	</definition>
+		<definition extends="none" name="vote/message-block">
+		<put-attribute name="body" value="/WEB-INF/views/vote/message-block.jspx" />
+	</definition>
+		<definition extends="none" name="vote/vote-block">
+		<put-attribute name="body" value="/WEB-INF/views/vote/vote-block.jspx" />
+	</definition>	
+			<definition extends="none" name="vote/vote-light-view">
+		<put-attribute name="body" value="/WEB-INF/views/vote/update-light-view.jspx" />
+	</definition>	
+</tiles-definitions>

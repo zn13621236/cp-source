@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" xmlns:spring="http://www.springframework.org/tags" xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<spring:url value="/users/show" var="url" />
+	<spring:url value="/users/update/preference?form" var="update_user_url" />
+
+
+	<div id="user_wrapper">
+		<a href="${update_user_url}">
+			<div id="user_img">
+				<IMG src="${userId.userImage}" alt="" id="userThumbNail"></IMG>
+			</div>
+		</a> <a href="${url}">
+			<div id="user_block_wrapper">
+				<c:if test="${!empty userId}">
+					<p>${userId.nickName}</p>
+					<p>Points: ${userId.points}</p>
+					<p>Fans: ${userId.fanNum}</p>
+				</c:if>
+			</div>
+		</a>
+
+
+		<div id="user_level">
+			<p id="level_position">Level: ${userId.level}</p>
+			<p id="exp_position">Exp: ${userId.exp}/${userId.expLimit}</p>
+		</div>
+
+		<!-- navigation category bar -->
+		<c:if test="${popular==true||!empty popular_category}">
+			<div id="side_bar_category">
+				<!-- <div id="bottomNav"> -->
+				<ul>
+					<p id="side_bar_category_title">Category</p>
+					<ul>
+						<spring:url value="/vote/popular" var="pop_url" />
+
+						<li><a href="${pop_url}">ALL</a></li>
+
+						<c:forEach var="category" items="${categoryValues}" varStatus="varStatus">
+							<spring:url value="/vote/${category}/popular" var="pop_category_url" />
+							<li><a href="${pop_category_url}"> <!--  <BUTTON class="vote_tag"> --> ${category} <!-- </BUTTON> -->
+							</a></li>
+						</c:forEach>
+					</ul>
+
+				</ul>
+				<!-- 	</div> -->
+			</div>
+		</c:if>
+<div id="user_recommend_block">
+		<c:if test="${!empty recommend_users}">
+			<p id="recommend_title">User To Watch</p>
+			<div id="recommend_user_replace">
+				<c:choose>
+					<c:when test="${!empty recommend_page}">
+						<spring:url value="/users/list/recommend/users?page=${recommend_page}" var="recommend_user_url" />
+					</c:when>
+					<c:otherwise>
+						<spring:url value="/users/list/recommend/users" var="recommend_user_url" />
+					</c:otherwise>
+				</c:choose>
+				<div id="recommend_user">
+					<c:forEach var="r_user" items="${recommend_users}" varStatus="varStatus">
+						<spring:url value="/users/show/others/${r_user.guid}" var="user_detail" />
+						<a href="${user_detail}">
+							<div id="recommend_user_element">
+								<c:choose>
+									<c:when test="${r_user.userImage!=null}">
+										<img id="recommendUserImage" src="${r_user.userImage}" alt="image not found" />
+									</c:when>
+									<c:otherwise>
+										<img id="recommendUserImage" src="https://s3-us-west-2.amazonaws.com/superpolltest/24655292e4034552a643615d0411f86c-1391234407790.png" alt="image not found" />
+									</c:otherwise>
+								</c:choose>
+								<div id="recommend_user_attribute">
+									<p>${r_user.nickName}</p>
+								</div>
+							</div>
+						</a>
+					</c:forEach>
+					<div id="go_see_more">
+						<a href="javascript:ajaxFanRequest('${recommend_user_url}','recommend_user_replace')">See More</a>
+					</div>
+				</div>
+			</div>
+		</c:if>
+		</div>
+		
+		<div id="wait" class="see_more_list"><h id="scroll_jquery">Scroll to see more....</h></div>
+	<!-- 	<h id="wait2" class="see_more_list">that is all...</h> -->
+	</div>
+	<SCRIPT type="text/javascript">
+		$("#wait").click(function() {
+			$("html, body").animate({
+				scrollTop : 0
+			}, "slow");
+			return false;
+		});
+	</SCRIPT>
+</div>

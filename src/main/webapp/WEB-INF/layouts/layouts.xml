@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+
+<tiles-definitions>
+
+  <definition name="default" template="/WEB-INF/layouts/default.jspx">
+    <put-attribute name="header" value="/WEB-INF/views/header.jspx" />
+    <put-attribute name="menu" value="/WEB-INF/views/menu.jspx" />    
+        <put-attribute name="menuBar" value="/WEB-INF/views/menubar.jspx" />
+  </definition>
+  
+
+  <definition name="none" template="/WEB-INF/layouts/block.jspx">
+
+  </definition>  
+
+  <definition name="public" template="/WEB-INF/layouts/default.jspx">
+    <put-attribute name="header" value="/WEB-INF/views/header.jspx" />
+    <put-attribute name="footer" value="/WEB-INF/views/footer.jspx" />
+  </definition>
+  
+    <definition name="front-page" template="/WEB-INF/layouts/front-page.jspx">
+    <put-attribute name="header" value="/WEB-INF/views/header.jspx" />
+    <put-attribute name="menu" value="/WEB-INF/views/menu-index.jspx" />
+    <put-attribute name="categoryBar" value="/WEB-INF/views/categoryBar.jspx" />
+     <put-attribute name="menuBar-before-login" value="/WEB-INF/views/menubar-index.jspx" />
+    <put-attribute name="footer" value="/WEB-INF/views/footer.jspx" />
+  </definition>
+
+</tiles-definitions>

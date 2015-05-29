@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_archer_sp_domain_User" items="${users}" z="OBCNRnOtJeDn7ev+eKkPIX1tZ1M=">
+        <table:table data="${users}" id="l_com_archer_sp_domain_User" path="/users" z="nzjDl3tX8nXQNqx8RHHqrVc6Yu8=">
+            <table:column id="c_com_archer_sp_domain_User_guid" property="guid" z="g0OgXRrZ3c+kgT++As/fOKzK19g="/>
+            <table:column id="c_com_archer_sp_domain_User_userName" property="userName" z="BDEDzcvNUhNooBbAUyLEegcW+mQ="/>
+            <table:column id="c_com_archer_sp_domain_User_passWord" property="passWord" z="nO2h2NTIkaX73VAYasJobCmtxBo="/>
+            <table:column id="c_com_archer_sp_domain_User_points" property="points" z="7XLXTQLuXu+vJ7Pw2tMbo6McEvg="/>
+            <table:column id="c_com_archer_sp_domain_User_status" property="status" z="PlCmOdd4ttWY6dR/F/8aUgCdv/E="/>
+            <table:column id="c_com_archer_sp_domain_User_createDate" property="createDate" z="akM8dsRNH5yAYDlQa1R9lV+LJfc="/>
+        </table:table>
+    </page:list>
+</div>

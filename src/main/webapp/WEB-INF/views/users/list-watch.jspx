@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:form="http://www.springframework.org/tags/form" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:spring="http://www.springframework.org/tags" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<div class="pollframe">
+		<div class="pollframe_inner">
+			<page:list id="pl_com_archer_sp_domain_Users" items="${watchers}" z="ljdO+FtZS00dNJpThDbmRnuqOsQ=" label="Manage my watch" labelPlural="My watch list">
+				<c:forEach var="watcher" items="${watchers}" varStatus="varStatus">
+					<div id="watcherElement">
+						<spring:url value="/users/idol/activity/${watcher.guid}" var="url" />
+
+						<c:choose>
+							<c:when test="${watcher.userImage!=null}">
+								<img id="watchUserImage" src="${watcher.userImage}" alt="image not found" />
+							</c:when>
+							<c:otherwise>
+								<img id="watchUserImage" src="https://s3-us-west-2.amazonaws.com/superpolltest/24655292e4034552a643615d0411f86c-1391234407790.png" alt="image not found" />
+							</c:otherwise>
+						</c:choose>
+						<a id="watcher_nickname" href="${url}">${watcher.nickName} </a>
+						<p class="no_margin">Level: ${watcher.level}</p>
+						<p class="no_margin">Fan: ${watcher.fanNum}</p>
+						
+						<spring:url value="/users/watch/remove/${watcher.guid}" var="menu_item_url" />
+						<form:form method="post" commandName="poll" action="${menu_item_url}">
+							<input id="unwatch_tag" type="submit" value="unwatch user" />
+						</form:form>
+					</div>
+				</c:forEach>
+				<c:if test="${more==true}">
+					<spring:url value="/users/list/watch?page=${page+1}" var="url" />
+					<a href="${url}">
+						<div id="watcherElement">
+							<p>See more</p>
+						</div>
+					</a>
+				</c:if>
+			</page:list>
+		</div>
+	</div>
+</div>

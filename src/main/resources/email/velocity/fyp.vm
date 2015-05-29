@@ -1,0 +1,18 @@
+<html>
+<body>
+<h3>Dear ${u.userName}:</h3>
+
+<div>
+   <h3>This is your new password : ${u.passWord}</h3>
+</div>
+
+<div>
+   <h3>Use this link to log in : http://localhost:8080/SuperPoll/users/login?form</h3>
+    <h3>We suggest you change your password after log in.</h3>
+</div>
+<div>
+   <h3>--Super Poll Support Team</h3>
+</div>
+</body>
+
+</html>

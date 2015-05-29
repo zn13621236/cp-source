@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:spring="http://www.springframework.org/tags" xmlns:fb="http://ogp.me/ns/fb#" xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" xmlns:form="http://www.springframework.org/tags/form" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<div class="voteframe">
+		<div class="pollframe_inner">
+			<page:show id="ps_com_archer_sp_domain_Poll" object="${poll}" path="/polls" z="3YmogYfNcr249xq5yFD/ykrlAT0=" list="false" create="false" update="false" delete="${owner}">
+				<div class="pollTheme">
+					<p>${poll.category}</p>
+				</div>
+				<p>Your poll is ready: </p>
+				<div class="pollTopic">
+					<c:choose>
+						<c:when test="${fn:contains(poll.question,poll.guid)}">
+							<img src="${poll.question}" alt="image not available" />
+						</c:when>
+						<c:otherwise>
+							<p>${poll.question}</p>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				<p>Send this link to your voter..</p>
+				<field:simpleDisplay label="Vote link" value="${poll.privateLink}" />
+				<p>Use this link to check results..</p>
+				<field:simpleDisplay label="Result link" value="http://localhost:8080/PollManiac/polls/${poll.guid}/show" />
+			</page:show>
+		</div>
+	</div>
+</div>
